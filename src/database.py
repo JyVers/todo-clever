@@ -24,6 +24,16 @@ Base = declarative_base()
 
 
 def init_db():
+    from sqlalchemy import text
+
+    try:
+        with engine.connect() as conn:
+            conn.execute(
+                text("CREATE TYPE IF NOT EXISTS statusenum AS ENUM ('pending', 'done')")
+            )
+            conn.commit()
+    except Exception as e:
+        print(f"Enum creation skipped: {e}")
     Base.metadata.create_all(bind=engine)
     print("Database initialized.")
 
