@@ -28,10 +28,12 @@ def init_db():
 
     try:
         with engine.connect() as conn:
-            conn.execute(
-                text("CREATE TYPE IF NOT EXISTS statusenum AS ENUM ('pending', 'done')")
+            result = conn.execute(
+                text("SELECT typname FROM pg_type WHERE typname = 'statusenum'")
             )
-            conn.commit()
+            if not result.fetchone():
+                conn.execute(text("CREATE TYPE statusenum AS ENUM ('pending', 'done')"))
+                conn.commit()
     except Exception as e:
         print(f"Enum creation skipped: {e}")
     Base.metadata.create_all(bind=engine)
