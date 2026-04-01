@@ -22,7 +22,6 @@ SessionLocal = sessionmaker(
 
 Base = declarative_base()
 
-
 def init_db():
     from sqlalchemy import text
 

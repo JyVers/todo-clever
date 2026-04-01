@@ -6,6 +6,8 @@ from datetime import datetime, date
 from models.todos import StatusEnum
 
 class TodosRepository:
+
+    # GET
     @staticmethod
     def get_all(db: Session, status: StatusEnum | None = None) -> list[Todos]:
         if status:
@@ -18,6 +20,17 @@ class TodosRepository:
             Optional[Todos],
             db.query(Todos).filter(Todos.id == id).first(),
         )
+    
+    @staticmethod
+    def get_overdue(db: Session) -> list[Todos]:
+        today = date.today()
+        return (
+            db.query(Todos)
+            .filter(Todos.status == StatusEnum.pending, Todos.due_date < today)
+            .all()
+        )
+
+    ###
 
     @staticmethod
     def patch(id: int, todo: TodosSchema, db: Session):
@@ -57,11 +70,3 @@ class TodosRepository:
         db.commit()
         return True
     
-    @staticmethod
-    def get_overdue(db: Session) -> list[Todos]:
-        today = date.today()
-        return (
-            db.query(Todos)
-            .filter(Todos.status == StatusEnum.pending, Todos.due_date < today)
-            .all()
-        )

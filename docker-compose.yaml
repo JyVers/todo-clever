@@ -8,7 +8,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      POSTGRESQL_ADDON_URI: ${POSTGRESQL_ADDON_URI}
+      POSTGRESQL_ADDON_URI: postgresql://user:password@db_backend:5432/todos
+      APP_NAME: "jlatmi-todo"
       PORT: 3000
     volumes:
       - ./src:/app

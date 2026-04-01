@@ -6,6 +6,7 @@ from models.todos import StatusEnum
 from controllers.sse import SSEManager
 
 class TodosController:
+    # GET
     @staticmethod
     def get_all_todos(db: Session, status: StatusEnum):
         return TodosRepository.get_all(db, status)
@@ -22,6 +23,8 @@ class TodosController:
     @staticmethod
     def get_todo_overdue(db: Session):
         return TodosRepository.get_overdue(db)
+
+    ###
 
     @staticmethod
     def create_todo(db: Session, todo: TodosSchema):
