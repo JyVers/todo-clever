@@ -1,8 +1,0 @@
-{
-  "build": {
-    "type": "python"
-  },
-  "env": {
-    "CC_PYTHON_MODULE": "src.main"
-  }
-}
