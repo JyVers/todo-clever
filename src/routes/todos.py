@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-from database import get_db
-from controllers.todos import TodosController
-from schemas.todos import TodosSchema
+from src.database import get_db
+from src.controllers.todos import TodosController
+from src.schemas.todos import TodosSchema
 
 router = APIRouter()
 

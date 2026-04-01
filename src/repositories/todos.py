@@ -1,5 +1,5 @@
 from typing import Optional, cast
-from models.todos import Todos
+from src.models.todos import Todos
 from sqlalchemy.orm import Session
 
 class TodosRepository:
