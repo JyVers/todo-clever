@@ -1,21 +1,21 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-from src.database import get_db
-from src.controllers.todos import TodosController
-from src.schemas.todos import TodosSchema
+from database import get_db
+from controllers.todos import TodosController
+from schemas.todos import TodosSchema
 
 router = APIRouter()
 
 
-# @router.post(
-#     "/todo",
-#     status_code=status.HTTP_201_CREATED,
-#     summary="Création d'une nouvelle une ville",
-#     description="Crée une ville",
-#     response_model=CitySchema,
-# )
-# def create_city(city: CitySchema, db: Session = Depends(get_db)):
-#     return UserController.create_user(db, city)
+@router.post(
+    "/todos",
+    status_code=status.HTTP_201_CREATED,
+    summary="Création d'une nouvelle une ville",
+    description="Crée une ville",
+    response_model=TodosSchema,
+)
+def create_city(todo: TodosSchema, db: Session = Depends(get_db)):
+    return TodosController.create_todo(db, todo)
 
 
 @router.get(

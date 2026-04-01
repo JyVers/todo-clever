@@ -1,8 +1,8 @@
 from typing import Optional, cast
-from src.models.todos import Todos
-from src.schemas.todos import TodosSchema
+from models.todos import Todos
+from schemas.todos import TodosSchema
 from sqlalchemy.orm import Session
-
+from datetime import datetime
 
 class TodosRepository:
     @staticmethod
@@ -17,9 +17,12 @@ class TodosRepository:
         )
 
     @staticmethod
-    def create(db: Session, Todos: TodosSchema) -> Todos:
-        db_Todos = Todos(**Todos.model_dump())  # convert schema → ORM instance
-        db.add(db_Todos)
+    def create(db: Session, todo: TodosSchema) -> Todos:
+        new_todo = Todos(
+        **todo.model_dump(),
+        created_at=datetime.now()
+        )
+        db.add(new_todo)
         db.commit()
-        db.refresh(db_Todos)
-        return db_Todos
+        db.refresh(new_todo)
+        return new_todo

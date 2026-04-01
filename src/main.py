@@ -2,11 +2,11 @@ from fastapi import FastAPI
 import uvicorn
 import os
 from dotenv import load_dotenv
-from src.routes.todos import router
-from src.database import init_db
+from routes.todos import router
+from database import init_db
 
 load_dotenv()
-port = int(os.environ.get("PORT", 8000))
+port = int(os.environ["PORT"])
 app = FastAPI()
 
 init_db()

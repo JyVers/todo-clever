@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
-from src.schemas.todos import TodosSchema
-from src.repositories.todos import TodosRepository
+from schemas.todos import TodosSchema
+from repositories.todos import TodosRepository
 
 
 class TodosController:

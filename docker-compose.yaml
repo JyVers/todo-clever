@@ -1,0 +1,42 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: build/backend/Dockerfile
+    container_name: backend_clever
+    restart: unless-stopped
+    ports:
+      - "3000:8000"
+    environment:
+      POSTGRESQL_ADDON_URI: ${POSTGRESQL_ADDON_URI}
+      PORT: 3000
+    volumes:
+      - ./src:/app
+    networks:
+      - backend-network
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: db_backend
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+      - ./build/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./build/database/insert.sql:/docker-entrypoint-initdb.d/insert.sql
+    networks:
+      - backend-network
+
+volumes:
+  postgres_data:
+
+networks:
+  backend-network:
+    driver: bridge
