@@ -1,10 +1,10 @@
 {
   "apps": [
     {
-      "app_id": "app_aa80e3ae-36f8-4505-9056-f533bd35e2cb",
+      "app_id": "app_dda3a6a6-e109-4415-a7b3-43a0067e0d17",
       "org_id": "orga_e4d64185-94d8-4d10-9d26-31b39dafd743",
-      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_aa80e3ae-36f8-4505-9056-f533bd35e2cb.git",
-      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_aa80e3ae-36f8-4505-9056-f533bd35e2cb.git",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_dda3a6a6-e109-4415-a7b3-43a0067e0d17.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_dda3a6a6-e109-4415-a7b3-43a0067e0d17.git",
       "name": "todo-latmi",
       "alias": "todo-latmi"
     }
