@@ -2,7 +2,7 @@
   "build": {
     "type": "python"
   },
-  "deploy": {
-    "start": "python src/main.py"
+  "env": {
+    "CC_PYTHON_MODULE": "src.main"
   }
 }
