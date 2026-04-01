@@ -9,4 +9,5 @@ dependencies = [
     "fastapi[standard]>=0.135.2",
     "psycopg2-binary>=2.9.11",
     "sqlmodel>=0.0.37",
+    "sse-starlette>=3.3.4",
 ]

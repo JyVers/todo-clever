@@ -2,11 +2,11 @@ services:
   backend:
     build:
       context: .
-      dockerfile: build/backend/Dockerfile
+      dockerfile: Dockerfile
     container_name: backend_clever
     restart: unless-stopped
     ports:
-      - "3000:8000"
+      - "3000:3000"
     environment:
       POSTGRESQL_ADDON_URI: ${POSTGRESQL_ADDON_URI}
       PORT: 3000
